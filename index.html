@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Movie_link</title>
+<link href="style_wankul.css" rel="stylesheet"> </link>
+<link href="particuleeffect.css" rel="stylesheet"> </link>
+
+
+</head>
+  <body>
+
+  </body>
+</html>
+
+<script src='vanilla-tilt.js'></script>
+<img  class='bg_jaune' src="bg_vert.jpg"alt=""  ></img>
+
+
+<div class ='containerall'>
+
+<div class='pack' data-tilt>
+  <img class='pack_img ' src="wankulcard.png" alt=""  ></img>
+  <img class='pack_img pack_fragment fragment_0' src="wankulcard_0004_Calque-6.png" alt=""  ></img>
+  <img class='pack_img pack_fragment fragment_1' src="wankulcard_0005_Calque-7.png" alt=""  ></img>
+  <img class='pack_img pack_fragment fragment_2' src="wankulcard_0003_Calque-5.png" alt=""  ></img>
+  <img class='pack_img pack_fragment fragment_3' src="wankulcard_0002_Calque-4.png" alt=""  ></img>
+  <img class='pack_img pack_fragment fragment_4' src="wankulcard_0001_Calque-3.png" alt=""  ></img>
+  <img class='pack_img pack_fragment fragment_5' src="wankulcard_0000_Calque-2.png" alt=""  ></img>
+
+  <div class='theButton particleButton particles'></div>
+
+</div>
+
+    <div class='card_board card_0' id=''>
+      <img class='movie_poster movie_poster_board back' src="wankil_back.png" alt=""  ></img>
+      <img class='movie_poster movie_poster_board real_face' src="boxeur.png" alt=""  ></img>
+      <div class='theButton particleButton particles'></div>
+
+
+      </div>
+      <div class='card_board card_1' id=''>
+        <img class='movie_poster movie_poster_board back' src="wankil_back.png" alt=""  ></img>
+        <img class='movie_poster movie_poster_board real_face' src="boxeur.png" alt=""  ></img>
+        <div class='theButton particleButton particles'></div>
+
+
+        </div>
+        <div class='card_board card_2' id=''>
+          <img class='movie_poster movie_poster_board back' src="wankil_back.png" alt=""  ></img>
+          <img class='movie_poster movie_poster_board real_face' src="boxeur.png" alt=""  ></img>
+          <div class='theButton particleButton particles'></div>
+
+
+          </div>
+          <div class='card_board card_3' id=''>
+            <img class='movie_poster movie_poster_board back' src="wankil_back.png" alt=""  ></img>
+            <img class='movie_poster movie_poster_board real_face' src="boxeur.png" alt=""  ></img>
+            <div class='theButton particleButton particles'></div>
+
+
+            </div>
+            <div class='card_board card_4' id=''>
+              <img class='movie_poster movie_poster_board back' src="wankil_back.png" alt=""  ></img>
+              <img class='movie_poster movie_poster_board real_face' src="boxeur.png" alt=""  ></img>
+              <div class='theButton particleButton particles'></div>
+
+
+              </div>
+
+
+</div>
+<script>
+
+var nb_card=0
+
+
+const cards=document.getElementsByClassName('card_board')
+for (var i = 0; i < cards.length; i++) {
+  VanillaTilt.init(cards[i], {
+  max: 30,
+  speed: 400,
+  scale:1.1,
+  glare :false,
+  "max-glare": 0.8
+  });
+
+  cards[i].addEventListener("click", function (){
+    console.log('kezklf,ze')
+    this.classList.add('flipping')
+    this.getElementsByClassName("particles")[0].classList.add("animated")
+
+
+    setTimeout(() => {
+
+          this.classList.add("erase")
+          nb_card+=1
+          console.log(nb_card)
+
+          if (nb_card==5){
+
+
+                setTimeout(() => {
+
+
+            nb_card=0
+            console.log('fini')
+            pack.classList.remove('pack_opening')
+            pack.getElementsByClassName("pack_img")[0].classList.remove('fade_out')
+            const fragments=document.getElementsByClassName('pack_fragment')
+
+            for (var i = 0; i < fragments.length; i++) {
+              fragments[i].classList.remove('fragment_opened')
+            }
+            const cards=document.getElementsByClassName('card_board')
+
+
+            for (var i = 0; i < cards.length; i++) {
+              cards[i].classList.remove('display')
+            }
+            pack.getElementsByClassName("particles")[0].classList.remove("animated")
+            pack.style.visibility="visible"
+            for (var i = 0; i < cards.length; i++) {
+              cards[i].classList.remove('flipping')
+              cards[i].getElementsByClassName("particles")[0].classList.remove("animated")
+              cards[i].classList.remove('erase')
+
+
+            }}, "500")
+
+
+
+          }
+
+
+      console.log("Retardée d'une seconde.");
+    }, "1000")
+
+
+
+
+
+  })
+}
+
+
+const pack=document.getElementsByClassName('pack')[0]
+VanillaTilt.init(pack, {
+max: 30,
+speed: 400,
+scale:1.1,
+glare :false,
+"max-glare": 0.8
+});
+pack.addEventListener("click", function (){
+  this.classList.add('pack_opening')
+  this.getElementsByClassName("pack_img")[0].classList.add('fade_out')
+
+    setTimeout(() => {
+
+        const fragments=document.getElementsByClassName('pack_fragment')
+
+        for (var i = 0; i < fragments.length; i++) {
+          fragments[i].classList.add('fragment_opened')
+        }
+
+        const cards=document.getElementsByClassName('card_board')
+
+
+        for (var i = 0; i < cards.length; i++) {
+          cards[i].classList.add('display')
+        }
+          this.getElementsByClassName("particles")[0].classList.add("animated")
+
+      console.log("Retardée d'une seconde.");
+    }, "500")
+
+        setTimeout(() => {
+
+          this.style.visibility="collapse"
+          console.log("Retardée d'une seconde.");
+        }, "1000")
+
+
+  console.log(this)
+
+})
+
+
+</script>
